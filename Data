@@ -1,0 +1,124 @@
+# Base de Conhecimento — CyberGuard
+
+## Phishing
+
+Phishing é uma técnica de engenharia social utilizada para induzir uma pessoa a revelar informações, clicar em links, abrir anexos ou executar ações indevidas.
+
+Indicadores comuns:
+
+- senso de urgência ou ameaça;
+- pedido inesperado de senha, código ou dados financeiros;
+- domínio parecido, mas diferente do legítimo;
+- erros incomuns de escrita;
+- anexos inesperados;
+- links encurtados ou suspeitos.
+
+Conduta recomendada:
+
+1. não clicar no link;
+2. não abrir anexos inesperados;
+3. verificar o remetente e o domínio;
+4. acessar o serviço diretamente pelo site ou aplicativo oficial;
+5. reportar a mensagem quando houver mecanismo corporativo ou do provedor.
+
+## MFA
+
+MFA significa autenticação multifator. O acesso depende de dois ou mais fatores de categorias diferentes, como:
+
+- algo que a pessoa sabe;
+- algo que possui;
+- algo que é.
+
+O MFA reduz o impacto de uma senha comprometida, embora não elimine todos os riscos.
+
+## Senhas
+
+Boas práticas:
+
+- usar senhas longas e únicas;
+- evitar reutilização entre serviços;
+- utilizar gerenciador de senhas quando apropriado;
+- habilitar MFA;
+- nunca compartilhar senhas.
+
+## Malware
+
+Malware é software desenvolvido para executar ações maliciosas ou indesejadas, como roubo de informações, alteração de dados ou comprometimento de sistemas.
+
+## Ransomware
+
+Ransomware é um tipo de malware que pode impedir o acesso a dados ou sistemas, frequentemente por meio de criptografia, e exigir pagamento.
+
+Medidas preventivas incluem:
+
+- backups adequados e testados;
+- atualização de sistemas;
+- MFA;
+- menor privilégio;
+- conscientização contra phishing;
+- proteção de endpoints e monitoramento.
+
+## Link suspeito
+
+Ao receber um link inesperado:
+
+- não clique imediatamente;
+- examine o domínio;
+- desconfie de urgência artificial;
+- confirme a solicitação por um canal independente;
+- prefira acessar o serviço digitando o endereço conhecido ou utilizando o aplicativo oficial.
+
+## Cliquei em um link suspeito
+
+A resposta depende do que ocorreu depois do clique. Como orientação inicial:
+
+1. não forneça credenciais;
+2. não execute arquivos baixados;
+3. se houve inserção de senha, altere a credencial por um canal oficial e seguro;
+4. habilite MFA quando disponível;
+5. informe a equipe de TI/segurança em ambiente corporativo;
+6. monitore sinais de atividade indevida.
+
+O CyberGuard não determina sozinho se um dispositivo foi comprometido.
+
+## Wi-Fi público
+
+Redes públicas podem aumentar o risco de interceptação, redes falsas e outros ataques. Recomenda-se:
+
+- evitar operações sensíveis em redes desconhecidas quando possível;
+- utilizar HTTPS;
+- manter sistema e aplicativos atualizados;
+- utilizar VPN confiável quando adequada ao cenário;
+- não aceitar certificados ou alertas de segurança sem verificar.
+
+## Menor privilégio
+
+O princípio do menor privilégio determina que usuários e sistemas devem possuir apenas as permissões necessárias para executar suas funções.
+
+Isso reduz a superfície de impacto caso uma conta seja comprometida.
+
+## Backup
+
+Backup é uma cópia de dados mantida para permitir recuperação após perda, corrupção ou incidente.
+
+Um backup útil deve ser:
+
+- periódico;
+- protegido;
+- recuperável;
+- testado.
+
+## Vazamento de credenciais
+
+Se uma credencial possivelmente vazou:
+
+1. alterar a senha no serviço oficial;
+2. não reutilizar a nova senha em outros serviços;
+3. encerrar sessões quando o serviço oferecer essa opção;
+4. habilitar MFA;
+5. verificar atividades recentes;
+6. comunicar a organização responsável quando aplicável.
+
+## Limitações
+
+Esta base é educacional e não representa uma política corporativa completa. Situações reais devem considerar contexto, criticidade e procedimentos da organização.
