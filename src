@@ -1,0 +1,122 @@
+"""CyberGuard - protótipo local de assistente de cibersegurança.
+
+O motor abaixo usa recuperação simples por palavras-chave para demonstrar
+o conceito de base de conhecimento sem depender de uma API externa.
+"""
+
+from pathlib import Path
+import re
+
+BASE = Path(__file__).resolve().parents[1] / "data" / "base_conhecimento.md"
+
+TOPICS = {
+    "phishing": ["phishing", "email", "e-mail", "mensagem", "remetente"],
+    "MFA": ["mfa", "autenticação multifator", "autenticacao multifator", "dois fatores"],
+    "senhas": ["senha", "senhas", "credencial", "credenciais", "password"],
+    "malware": ["malware", "ransomware", "vírus", "virus"],
+    "link": ["link", "cliquei", "clicar", "anexo"],
+    "wifi": ["wifi", "wi-fi", "rede pública", "rede publica"],
+    "privilégio": ["privilégio", "privilegio", "permissão", "permissao", "menor privilégio"],
+    "backup": ["backup", "cópia", "copia", "recuperação"],
+    "vazamento": ["vazou", "vazamento", "credencial comprometida"],
+}
+
+RESPONSES = {
+    "phishing": (
+        "A situação pode indicar phishing. Não clique em links nem abra anexos "
+        "inesperados, não forneça credenciais e verifique a solicitação por um "
+        "canal oficial. Se possível, reporte a mensagem."
+    ),
+    "MFA": (
+        "MFA é autenticação multifator: o acesso exige dois ou mais fatores de "
+        "categorias diferentes. Ele reduz o impacto de uma senha comprometida, "
+        "embora não elimine todos os riscos."
+    ),
+    "senhas": (
+        "Use senhas longas e únicas, evite reutilização entre serviços e, quando "
+        "apropriado, utilize um gerenciador de senhas. Nunca compartilhe senhas."
+    ),
+    "malware": (
+        "Malware é software desenvolvido para realizar ações maliciosas ou "
+        "indesejadas. Ransomware é um tipo que pode impedir o acesso a dados ou "
+        "sistemas, frequentemente por criptografia. Backups testados, atualizações, "
+        "MFA e menor privilégio ajudam na prevenção."
+    ),
+    "link": (
+        "Não clique novamente nem execute arquivos baixados. Verifique o domínio "
+        "e acesse o serviço diretamente pelo endereço conhecido ou aplicativo oficial. "
+        "Se você informou uma senha, altere-a pelo canal oficial e habilite MFA."
+    ),
+    "wifi": (
+        "Em Wi-Fi público, evite operações sensíveis quando possível, mantenha "
+        "sistemas atualizados, utilize HTTPS e considere uma VPN confiável quando "
+        "adequada ao cenário."
+    ),
+    "privilégio": (
+        "O princípio do menor privilégio determina que usuários e sistemas tenham "
+        "somente as permissões necessárias para suas funções, reduzindo o impacto "
+        "potencial de uma conta comprometida."
+    ),
+    "backup": (
+        "Mantenha backups periódicos, protegidos e recuperáveis. O ponto crítico "
+        "é testar a restauração; um backup que nunca foi testado não garante uma "
+        "recuperação bem-sucedida."
+    ),
+    "vazamento": (
+        "Se uma credencial possivelmente vazou, altere a senha no serviço oficial, "
+        "não reutilize a nova senha, encerre sessões quando possível, habilite MFA "
+        "e verifique atividades recentes."
+    ),
+}
+
+
+def normalize(text: str) -> str:
+    return re.sub(r"\s+", " ", text.lower().strip())
+
+
+def classify(question: str):
+    q = normalize(question)
+    scores = {
+        topic: sum(1 for term in terms if term in q)
+        for topic, terms in TOPICS.items()
+    }
+    best = max(scores, key=scores.get)
+    return best if scores[best] > 0 else None
+
+
+def answer(question: str) -> str:
+    topic = classify(question)
+
+    if not topic:
+        return (
+            "Não encontrei informação suficiente na minha base de conhecimento "
+            "para responder com segurança. Posso ajudar com phishing, MFA, "
+            "senhas, malware/ransomware, links suspeitos, Wi-Fi público, "
+            "menor privilégio, backup e vazamento de credenciais."
+        )
+
+    return RESPONSES[topic]
+
+
+def main():
+    print("=" * 60)
+    print("CyberGuard — Assistente de Cibersegurança")
+    print("Digite 'sair' para encerrar.")
+    print("=" * 60)
+
+    while True:
+        question = input("\nVocê: ").strip()
+
+        if normalize(question) in {"sair", "exit", "quit"}:
+            print("CyberGuard: Encerrando.")
+            break
+
+        if not question:
+            print("CyberGuard: Digite uma pergunta.")
+            continue
+
+        print(f"CyberGuard: {answer(question)}")
+
+
+if __name__ == "__main__":
+    main()
