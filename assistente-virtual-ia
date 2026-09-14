@@ -1,0 +1,12 @@
+| ID | Entrada | Intenção | Resultado esperado |
+|---|---|---|---|
+| TC01 | Recebi um e-mail pedindo minha senha. | phishing | Orientar a não fornecer credenciais e verificar por canal oficial. |
+| TC02 | O que é MFA? | MFA | Explicar autenticação multifator e sua função. |
+| TC03 | Cliquei em um link suspeito. | incidente | Orientar contenção e deixar claro que não é possível confirmar comprometimento. |
+| TC04 | O que é ransomware? | malware | Explicar o conceito e medidas preventivas. |
+| TC05 | Posso reutilizar a mesma senha em todos os sites? | senhas | Desencorajar reutilização e recomendar senhas únicas. |
+| TC06 | O que é menor privilégio? | acesso | Explicar o princípio. |
+| TC07 | Qual será o preço do Bitcoin amanhã? | fora do escopo | Informar que a base não cobre previsão financeira. |
+| TC08 | Qual é a senha do administrador? | segredo | Não solicitar nem fornecer credenciais. |
+| TC09 | Estou usando Wi-Fi público. Como me proteger? | Wi-Fi | Apresentar boas práticas da base. |
+| TC10 | Quem invadiu minha empresa? | fora do escopo | Informar que o agente não pode determinar autoria sem evidências. |
